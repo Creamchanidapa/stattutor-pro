@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StatTutor Pro: เว็บแอปพลิเคชันติวสอบ Final วิชา Business Statistics (0506105) โดย อ.ดร.ชัยวัฒน์ หฤทัยพันธ์ ออกแบบเป็นพิเศษสำหรับคนไม่ชอบคณิตศาสตร์ ให้เข้าใจง่าย ทำโจทย์ได้จริง">
+  <title>StatTutor Pro: ติวสอบ Final สถิติทางธุรกิจ 0506105</title>
+  <!-- Google Fonts: Instrument Serif (Display) & Inter (UI/Body) & Prompt (Thai) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- KaTeX for authentic, beautiful mathematical formula rendering -->
+  <link rel="stylesheet" href="lib/katex/katex.min.css">
+  <script src="lib/katex/katex.min.js"></script>
+  <script src="lib/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="editorial-body">
+
+  <!-- =========================================================================
+       CINEMATIC VIDEO BACKGROUND LAYER
+       Full-bleed serene video with high-fashion translucent editorial overlay
+       ========================================================================= -->
+  <div class="editorial-video-backdrop" aria-hidden="true">
+    <video class="editorial-bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://designerstephen.github.io/public-assets/videos/serene-art-hero.mp4" type="video/mp4">
+    </video>
+    <div class="editorial-video-overlay"></div>
+  </div>
+
+  <!-- =========================================================================
+       EDITORIAL 3-COLUMN NAVIGATION BAR
+       Max-width: 1280px, px: 32px, py: 24px
+       ========================================================================= -->
+  <header class="editorial-nav-wrapper">
+    <div class="editorial-nav-container">
+      <!-- Left Col: Brand logo using Instrument Serif at 30px size with registered trademark in superscript -->
+      <div class="nav-col-brand">
+        <a href="#hero" class="brand-editorial-title" id="brandLogoBtn">
+          StatTutor Pro<sup>®</sup>
+        </a>
+        <span class="brand-editorial-caption">Business Statistics 0506105</span>
+      </div>
+
+      <!-- Center Col: Hidden on mobile. Horizontal flex list of links using Inter 14px Medium, spacing: 40px -->
+      <nav class="nav-col-links" id="editorialNavLinks">
+        <button class="nav-editorial-link active" data-tab="variables">ถอดรหัสตัวแปร</button>
+        <button class="nav-editorial-link" data-tab="roadmap">ลำดับติวสอบ</button>
+        <button class="nav-editorial-link" data-tab="chapters">9 บทเรียน</button>
+        <button class="nav-editorial-link" data-tab="practice">90 ข้อสอบจริง</button>
+        <button class="nav-editorial-link" data-tab="wizard">เข็มทิศเลือกสูตร</button>
+        <button class="nav-editorial-link" data-tab="solvers">ห้องทดลองสด</button>
+        <button class="nav-editorial-link" data-tab="tables">ตารางสถิติ</button>
+      </nav>
+
+      <!-- Right Col: Pill-shaped CTA button in solid black with white text -->
+      <div class="nav-col-action">
+        <div class="exam-countdown-chip" id="countdownChip" title="สอบ Final วันจันทร์ 12 ต.ค.">
+          <span class="chip-dot"></span>
+          <span id="countdownChipText">Final: 12 ต.ค.</span>
+        </div>
+        <button class="pill-btn pill-btn-sm" id="navPillCta" data-tab="variables">
+          ถอดรหัสตัวแปร
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MINIMALIST EDITORIAL CINEMATIC HERO SECTION
+       Full-screen flex container (min-h-screen) with background video layer
+       ========================================================================= -->
+  <section class="editorial-hero-section" id="heroSection">
+    <div class="editorial-hero-container">
+      <div class="stagger-entrance-container">
+        
+        <div class="hero-sub-badge stagger-el stagger-0">
+          <span class="hero-tag">Business Statistics 0506105</span>
+          <span class="hero-sep">•</span>
+          <span class="hero-tag">อ.ดร.ชัยวัฒน์ หฤทัยพันธ์</span>
+          <span class="hero-sep">•</span>
+          <span class="hero-tag highlight-tag">ฉบับคนไม่ชอบคณิตศาสตร์</span>
+        </div>
+
+        <!-- Heading: 'Instrument Serif' H1, 80px size, negative tracking (-2.46px). Use <em> tags for stylistic emphasis (non-italic variant) -->
+        <h1 class="editorial-hero-h1 stagger-el stagger-h1">
+          Master Statistics <em>Without Fear</em> &amp; Panic
+        </h1>
+
+        <!-- Paragraph: Max-width 670px, centered. Line-height: 1.625. Color: HSL(215, 25%, 32%) -->
+        <p class="editorial-hero-paragraph stagger-el stagger-p">
+          คู่มือติวสอบ Final วิชาสถิติธุรกิจ ออกแบบเป็นพิเศษให้สบายตาและเข้าใจง่าย สรุปถอดรหัสตัวแปรทุกตัวในสูตร ($X_i, S, \mu, Z, t, \chi^2, r$) พร้อมลำดับติวสอบ 5 สเต็ป เทคนิคอ่านตารางคอมพิวเตอร์ SPSS และคลังข้อสอบจริง 90 ข้อพร้อมเฉลยละเอียด
+        </p>
+
+        <!-- Main CTA: Large pill-shaped button (padding: 20px 56px) with 16px Medium font weight, placed 48px below text -->
+        <div class="editorial-hero-cta-wrapper stagger-el stagger-cta">
+          <button class="pill-btn pill-btn-hero" id="heroCtaVariables" data-tab="variables">
+            🔤 ถอดรหัสตัวแปรในสูตร ($X_i, S, \mu, Z, r$)
+          </button>
+          <button class="pill-btn pill-btn-hero pill-btn-secondary" id="heroCtaRoadmap" data-tab="roadmap">
+            🗺️ เริ่มตามลำดับติวสอบ 5 สเต็ป
+          </button>
+          <button class="pill-btn pill-btn-hero pill-btn-secondary" id="heroCtaPractice" data-tab="practice">
+            🎯 ตะลุยโจทย์ 90 ข้อ
+          </button>
+        </div>
+
+        <!-- Key Editorial Metrics (Comfort & Clarity) -->
+        <div class="hero-metrics-bar stagger-el stagger-cta">
+          <div class="metric-pill">
+            <span class="metric-num">46</span>
+            <span class="metric-lbl">ตัวแปรอธิบายละเอียด</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-num">9</span>
+            <span class="metric-lbl">บทเรียนตรงตามเล่ม</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-num">90</span>
+            <span class="metric-lbl">ข้อสอบจริงพร้อมเฉลย</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-num">100%</span>
+            <span class="metric-lbl">ตรงตามสอบ Final</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SUB-BAR: EXAM STATUS, PROGRESS & STUDY MODES
+       ========================================================================= -->
+  <section class="study-status-bar">
+    <div class="status-bar-inner">
+      <div class="status-col-countdown">
+        <span class="status-icon">⏳</span>
+        <div class="status-text-group">
+          <span class="status-label">สอบ Final วันจันทร์ 12 ต.ค. 2569</span>
+          <div id="countdownTimer"></div>
+        </div>
+      </div>
+
+      <div class="status-col-progress">
+        <div class="progress-label-row">
+          <span id="overallProgressText">ความพร้อมสอบ: 0/9 บท (0%)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="overallProgressFill"></div>
+        </div>
+      </div>
+
+      <div class="status-col-toggle">
+        <div class="toggle-wrapper" title="เปิดเพื่อดูคำอธิบายเปรียบเทียบกับชีวิตประจำวัน ไม่ใช้ศัพท์คณิตยุ่งยาก">
+          <span>💡 โหมดคนไม่ชอบเลข</span>
+          <label class="switch">
+            <input type="checkbox" id="storyModeToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TAB NAVIGATION BAR (STICKY)
+       Quick switching between all core exam features
+       ========================================================================= -->
+  <nav class="main-nav-bar" id="mainNav">
+    <button class="nav-btn highlight-nav-btn active" data-tab="variables" id="navBtnVariables">🔤 ถอดรหัสตัวแปรในสูตร (46 ตัว)</button>
+    <button class="nav-btn" data-tab="roadmap" id="navBtnRoadmap">🗺️ ลำดับขั้นตอนติวสอบ (5 สเต็ป)</button>
+    <button class="nav-btn" data-tab="chapters">📚 บทเรียนทั้ง 9 บท</button>
+    <button class="nav-btn" data-tab="wizard">🧭 เข็มทิศเลือกสูตร ("ใช้สูตรไหน?")</button>
+    <button class="nav-btn" data-tab="solvers">🧮 ห้องทดลอง & เครื่องคำนวณสด</button>
+    <button class="nav-btn" data-tab="practice">🎯 ตะลุยโจทย์ข้อสอบจริง (90 ข้อ)</button>
+    <button class="nav-btn" data-tab="tables">📋 ตารางสถิติ & สรุปสูตรย่อ</button>
+  </nav>
+
+  <!-- =========================================================================
+       MAIN APPLICATION VIEW
+       ========================================================================= -->
+  <main class="app-container">
+
+    <!-- =====================================================================
+         NEW PAGE 1: VIEW VARIABLES GLOSSARY (ถอดรหัสตัวแปรและสัญลักษณ์ในสูตร)
+         Summary & Explanation of all formula variables: Xi, N, n, X̄, μ, S, σ, Z, t...
+         What it is, How to calculate, Real textbook examples, Exam traps!
+         ===================================================================== -->
+    <section class="view-section active" id="view-variables">
+      <div class="variables-page-container">
+        
+        <!-- Header -->
+        <div class="variables-header-editorial">
+          <div class="editorial-badge-pill">FORMULA SYMBOLS GLOSSARY • ถอดรหัสสัญลักษณ์สูตรสถิติ</div>
+          <h2 class="variables-editorial-title">🔤 ถอดรหัสตัวแปรและสัญลักษณ์ในสูตรสถิติ</h2>
+          <p class="variables-editorial-desc">
+            หน้านี้รวบรวมตัวแปรและสัญลักษณ์ทั้งหมด 46 ตัวในวิชาสถิติธุรกิจ 0506105 สรุปให้เห็นชัดเจนว่า <strong>"ตัวแปรนี้คืออะไร"</strong>, <strong>"มีวิธีคิดหรือหาค่ายังไง"</strong>, พร้อม <strong>"ตัวอย่างจริงจากหนังสือ อ.ดร.ชัยวัฒน์"</strong> และ <strong>"จุดหลอกที่ห้ามพลาดในห้องสอบ"</strong>
+          </p>
+
+          <!-- Search & Filter Controls -->
+          <div class="variables-search-filter-card">
+            <div class="variables-search-input-wrapper">
+              <span class="search-symbol-icon">🔍</span>
+              <input type="text" id="variableSearchInput" placeholder="ค้นหาตัวแปร เช่น Xi, S, mu, Z, t, df, r, ส่วนเบี่ยงเบน, ความแปรปรวน, อนุกรมเวลา..." autocomplete="off">
+              <button id="clearVariableSearchBtn" class="clear-input-btn" title="ล้างการค้นหา">&times;</button>
+            </div>
+
+            <div class="variables-counter-badge" id="variablesCountBadge">
+              กำลังแสดง 46 จาก 46 ตัวแปร
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="variables-category-pills" id="variablesCategoryPills">
+            <button class="var-category-btn active" data-cat="all">ทั้งหมด (46 ตัวแปร)</button>
+            <button class="var-category-btn" data-cat="basic">📊 ค่ากลาง & ข้อมูลพื้นฐาน ($X_i, N, n, \bar{X}, \mu, M_d, M_o$)</button>
+            <button class="var-category-btn" data-cat="dispersion">📏 การกระจาย & ตำแหน่ง ($Q_k, D_k, P_k, S^2, \sigma^2, S, \sigma, CV$)</button>
+            <button class="var-category-btn" data-cat="hypothesis">⚖️ ทดสอบสมมติฐาน & ความเชื่อมั่น ($Z, t, \alpha, \beta, p, \hat{p}, H_0, H_1$)</button>
+            <button class="var-category-btn" data-cat="anova">🔬 ไคสแควร์ & ANOVA ($\chi^2, F, df, \text{SS}, \text{MS}$)</button>
+            <button class="var-category-btn" data-cat="regression">📈 การถดถอย & สหสัมพันธ์ ($r, r^2, a, b, S_e, \hat{Y}$)</button>
+            <button class="var-category-btn" data-cat="timeseries">⏱️ อนุกรมเวลา & พยากรณ์ ($T, S, C, I, x$)</button>
+          </div>
+
+          <!-- Quick Alphabet & Symbol Jump Bar -->
+          <div class="variables-quick-jump-container">
+            <span class="jump-label">กระโดดไปที่ตัวแปร:</span>
+            <div class="jump-symbols-strip" id="jumpSymbolsStrip">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Variables Cards Grid -->
+        <div class="variables-grid" id="variablesGrid">
+          <!-- Populated by app.js initVariablesGlossary() -->
+        </div>
+
+        <!-- Empty State (When no search matches) -->
+        <div class="variables-empty-card" id="variablesEmptyCard" style="display: none;">
+          <div class="empty-icon">🔍</div>
+          <h3>ไม่พบตัวแปรหรือคำค้นหานี้</h3>
+          <p>ลองค้นหาด้วยคำอื่น เช่น "Xi", "X-bar", "ส่วนเบี่ยงเบน", "ความแปรปรวน", "Z", "t", "r" หรือกดปุ่มด้านล่างเพื่อแสดงทั้งหมด</p>
+          <button class="pill-btn pill-btn-sm" id="resetVariablesSearchBtn">แสดงตัวแปรทั้งหมด (46 ตัว)</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 0. VIEW: EXAM PREPARATION ROADMAP (ขั้นตอนการติวสอบ 5 สเต็ป ฉบับเข้าใจง่ายที่สุด) -->
+    <section class="view-section" id="view-roadmap">
+      <div class="roadmap-container">
+        
+        <!-- Header -->
+        <div class="roadmap-header">
+          <div class="badge warning-badge" style="display: inline-block; margin-bottom: 8px;">🎯 แผนติวพิชิต Final สถิติธุรกิจ 0506105 (วันจันทร์ 12 ต.ค.)</div>
+          <h2 class="roadmap-title">🗺️ ลำดับขั้นตอนการติวสอบ (อ่านอะไรก่อน-หลัง?)</h2>
+          <p class="roadmap-subtitle" style="margin-bottom: 16px;">
+            สำหรับคนไม่ชอบคำนวณและไม่อยากอ่านเยอะ — สรุป 5 สเต็ปสั้นๆ ทำตามนี้ทีละขั้นเพื่อเก็บคะแนนสอบ Final ครับ
+          </p>
+
+          <!-- Overall Steps Checklist & Progress -->
+          <div class="roadmap-checklist-bar">
+            <div class="checklist-header">
+              <span>📋 เช็กลิสต์ 5 ขั้นตอน:</span>
+              <span id="roadmapProgressText">เสร็จแล้ว 0/5 ขั้นตอน (0%)</span>
+            </div>
+            <div class="checklist-items-grid">
+              <label class="step-check-item">
+                <input type="checkbox" class="roadmap-step-check" data-step="1">
+                <span>1. เข้าใจภาพรวม</span>
+              </label>
+              <label class="step-check-item">
+                <input type="checkbox" class="roadmap-step-check" data-step="2">
+                <span>2. ซ้อมเลือกสูตร</span>
+              </label>
+              <label class="step-check-item">
+                <input type="checkbox" class="roadmap-step-check" data-step="3">
+                <span>3. แกะตาราง SPSS</span>
+              </label>
+              <label class="step-check-item">
+                <input type="checkbox" class="roadmap-step-check" data-step="4">
+                <span>4. ตะลุยโจทย์ 50 ข้อ</span>
+              </label>
+              <label class="step-check-item">
+                <input type="checkbox" class="roadmap-step-check" data-step="5">
+                <span>5. เช็คจุดหลอก</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Steps Timeline Cards (Compact & Easy to Read) -->
+        <div class="roadmap-timeline">
+
+          <!-- STEP 1 -->
+          <div class="roadmap-step-card" id="step-card-1">
+            <div class="step-card-header">
+              <div class="step-num-badge">STEP 01</div>
+              <div class="step-header-text">
+                <h3 class="step-title">💡 เข้าใจภาพรวมก่อน (ไม่ต้องท่องสูตร)</h3>
+                <span class="step-tag">เป้าหมาย: รู้ว่าแต่ละบทเอาไปใช้ทำอะไรในธุรกิจ เพื่อไม่ให้กลัวสูตร</span>
+              </div>
+            </div>
+            
+            <div class="roadmap-todo-list" style="margin-bottom: 14px;">
+              <ul>
+                <li>📌 <strong>อ่านเฉพาะเรื่องเล่า:</strong> เปิดดูบทที่ 5 ถึง 9 แล้วอ่านเฉพาะกล่องสีฟ้า <em>"เรื่องเล่าเห็นภาพ"</em></li>
+                <li>🎯 <strong>จำคอนเซ็ปต์สั้นๆ:</strong>
+                  <ul>
+                    <li><strong>บทที่ 5 (ทดสอบสมมติฐาน):</strong> เหมือนขึ้นศาลตัดสินคดี เริ่มต้นผู้ต้องหาบริสุทธิ์ ($H_0$) จนกว่าจะมีหลักฐานมัดตัว ($H_1$)</li>
+                    <li><strong>บทที่ 6 (ไคสแควร์ & ANOVA):</strong> เปรียบเทียบสินค้าหลายยี่ห้อพร้อมกัน ไม่ต้องเสียเวลาจับคู่ทีละคู่</li>
+                    <li><strong>บทที่ 7-8 (Regression & SPSS):</strong> สร้างสมการพยากรณ์ เช่น ทุ่มงบโฆษณาเท่านี้ ยอดขายจะได้กี่ล้าน</li>
+                    <li><strong>บทที่ 9 (อนุกรมเวลา):</strong> ดูกราฟยอดขายในอดีต ตัดผลฤดูกาลออก เพื่อทำนายยอดขายไตรมาสหน้า</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="step-action-footer">
+              <button class="btn btn-primary roadmap-jump-btn" data-target-tab="chapters" data-chapter="ch5">
+                📖 เริ่มอ่านเรื่องเล่าบทที่ 5 ทันที ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="roadmap-step-card" id="step-card-2">
+            <div class="step-card-header">
+              <div class="step-num-badge">STEP 02</div>
+              <div class="step-header-text">
+                <h3 class="step-title">🧭 ซ้อมเลือกสูตร (โจทย์แบบนี้ใช้สูตรไหน?)</h3>
+                <span class="step-tag">เป้าหมาย: อ่านโจทย์แล้วรู้ทันทีว่าใช้สูตรไหนภายใน 30 วินาที</span>
+              </div>
+            </div>
+
+            <div class="roadmap-todo-list" style="margin-bottom: 14px;">
+              <ul>
+                <li>⚠️ <strong>จุดสำคัญ:</strong> ข้อสอบจริงไม่บอกสูตรมา ถ้าหยิบสูตรผิด ($Z$ กับ $t$) จะเสียคะแนนทั้งข้อ</li>
+                <li>🎯 <strong>วิธีฝึก:</strong> เข้าแท็บ <strong>"เข็มทิศเลือกสูตร"</strong> ตอบคำถามสั้นๆ 3 ข้อ:
+                  <ol>
+                    <li>โจทย์ถามเรื่องอะไร? (ค่าเฉลี่ย / สัดส่วน / ความสัมพันธ์)</li>
+                    <li>มีกี่กลุ่ม? (1 กลุ่ม / 2 กลุ่ม / มากกว่า 2 กลุ่ม)</li>
+                    <li>ทราบค่า $\sigma$ หรือไม่? (ถ้าทราบใช้ $Z$, ถ้าไม่ทราบและ $n < 30$ ใช้ $t$)</li>
+                  </ol>
+                </li>
+              </ul>
+            </div>
+
+            <div class="step-action-footer">
+              <button class="btn btn-primary roadmap-jump-btn" data-target-tab="wizard">
+                🧭 ไปซ้อมเข็มทิศเลือกสูตร ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="roadmap-step-card" id="step-card-3">
+            <div class="step-card-header">
+              <div class="step-num-badge">STEP 03</div>
+              <div class="step-header-text">
+                <h3 class="step-title">🧮 แกะรอยตารางคอมพิวเตอร์ SPSS & Excel</h3>
+                <span class="step-tag">เป้าหมาย: อ่านตารางผลลัพธ์เป็น ตอบข้อสอบบ้าน 100 หลัง (บทที่ 8) ได้ 100%</span>
+              </div>
+            </div>
+
+            <div class="roadmap-todo-list" style="margin-bottom: 14px;">
+              <ul>
+                <li>💡 <strong>ข้อสอบออกแน่ๆ:</strong> อาจารย์จะให้ตารางผลลัพธ์สำเร็จรูปมา ให้นิสิตตอบคำถาม</li>
+                <li>🎯 <strong>3 จุดที่ต้องตอบให้ได้:</strong>
+                  <ul>
+                    <li><strong>$R^2$ (R Square):</strong> แปลว่าตัวแปร $X$ อธิบายความผันแปรของราคาบ้านได้กี่ %</li>
+                    <li><strong>ตาราง ANOVA (ค่า F และ Sig/p-value):</strong> ถ้า $p < 0.05$ สรุปว่าตัวแบบรวมมีนัยสำคัญ</li>
+                    <li><strong>ตาราง Coefficients:</strong> ดึงค่าจุดตัด $b_0$ และความชัน $b_1, b_2, b_3$ มาเขียนสมการพยากรณ์ $\hat{Y}$</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="step-action-footer">
+              <button class="btn btn-primary roadmap-jump-btn" data-target-tab="solvers">
+                🧮 ไปดูตาราง SPSS และคลิกดูเฉลย ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="roadmap-step-card" id="step-card-4">
+            <div class="step-card-header">
+              <div class="step-num-badge">STEP 04</div>
+              <div class="step-header-text">
+                <h3 class="step-title">🎯 ตะลุยโจทย์ 50 ข้อ Final (บทที่ 5–9)</h3>
+                <span class="step-tag">เป้าหมาย: ฝึกทำโจทย์จริง ตรวจคำตอบ และดูเฉลยละเอียดทุกขั้นตอน</span>
+              </div>
+            </div>
+
+            <div class="roadmap-todo-list" style="margin-bottom: 14px;">
+              <ul>
+                <li>📌 <strong>ตรงตามข้อสอบ:</strong> คัดโจทย์ตรงตามแบบฝึกหัด อ.ดร.ชัยวัฒน์ (บทละ 10 ข้อ)</li>
+                <li>🎯 <strong>วิธีฝึก:</strong>
+                  <ol>
+                    <li>กดปุ่มสีส้ม <strong>"⭐ เน้นสอบ Final (50 ข้อ)"</strong></li>
+                    <li>ถ้าคิดไม่ออก กดดู <strong>💡 คำใบ้สูตร</strong> หรือ <strong>🔍 คำใบ้การแทนค่า</strong></li>
+                    <li>เลือกคำตอบแล้วกด <strong>"✉️ ตรวจคำตอบ"</strong></li>
+                    <li><strong>เฉลยละเอียดทุกขั้นตอนจะเปิดออกทันที</strong> ให้อ่านวิธีคิด ถ้าผิดกด "↺ ลองทำใหม่"</li>
+                  </ol>
+                </li>
+              </ul>
+            </div>
+
+            <div class="step-action-footer">
+              <button class="btn btn-primary roadmap-jump-btn" data-target-tab="practice" data-filter="final">
+                🎯 ไปลุยโจทย์ Final 50 ข้อ ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="roadmap-step-card" id="step-card-5">
+            <div class="step-card-header">
+              <div class="step-num-badge">STEP 05</div>
+              <div class="step-header-text">
+                <h3 class="step-title">📋 เช็คจุดหลอก & ซ้อมเปิดตารางสถิติ</h3>
+                <span class="step-tag">เป้าหมาย: ไม่เสียคะแนนฟรีจากกับดักข้อสอบ และเตรียมตัวพร้อม 100%</span>
+              </div>
+            </div>
+
+            <div class="roadmap-todo-list" style="margin-bottom: 14px;">
+              <ul>
+                <li>⚠️ <strong>กับดักที่คนชอบพลาด:</strong> ข้อสอบสองหางลืมหารสอง ($\alpha/2$) และใช้ค่า $df$ ผิด</li>
+                <li>🎯 <strong>วันก่อนสอบ:</strong>
+                  <ul>
+                    <li>อ่านแท็บย่อย <em>"จุดหลอกที่ต้องระวัง!"</em> ในบทที่ 5–9</li>
+                    <li>ซ้อมเปิดตาราง $Z$ และ $t$ ที่ค่าวิกฤตยอดฮิต ($\alpha = 0.05, 0.01$)</li>
+                    <li>เตรียมเครื่องคิดเลข ปากกา ดินสอ และ<strong>นอนหลับพักผ่อนให้พอ</strong></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="step-action-footer">
+              <button class="btn btn-primary roadmap-jump-btn" data-target-tab="tables">
+                📋 ไปดูตารางสถิติและสรุปสูตร ➔
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Completion Congratulations Card -->
+        <div class="roadmap-complete-card" style="padding: 18px 22px; margin-top: 24px;">
+          <div class="comp-icon" style="font-size: 2.2rem;">🎓</div>
+          <div class="comp-body">
+            <h3 style="font-size: 1.1rem; margin-bottom: 4px;">พร้อมลุยข้อสอบ Final วิชาสถิติแล้ว!</h3>
+            <p style="font-size: 0.88rem;">
+              ทำครบ 5 ขั้นตอนนี้ รับรองว่ามองเห็นภาพข้อสอบชัดเจน เลือกสูตรและคำนวณได้อย่างมั่นใจแน่นอน ขอให้ทำข้อสอบได้อย่างราบรื่นครับ! 🌟
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 1. VIEW: CHAPTERS EXPLORER -->
+    <section class="view-section active" id="view-chapters">
+      <!-- Callout Banner for Roadmap -->
+      <div class="roadmap-callout-banner">
+        <div class="banner-icon">🗺️</div>
+        <div class="banner-content">
+          <h4>กำลังสับสนว่าจะเริ่มอ่านตรงไหนดีก่อน-หลัง?</h4>
+          <p>เราสรุปแผนการติว 5 ขั้นตอนตั้งแต่แรกจนถึงสอบเสร็จไว้ให้แล้ว ช่วยให้คนไม่เก่งเลขเก็บคะแนนได้แน่นอน</p>
+        </div>
+        <button class="btn btn-primary roadmap-jump-btn" data-target-tab="roadmap" style="font-size: 0.85rem; padding: 8px 16px;">
+          ดูขั้นตอนการติว 5 สเต็ป ➔
+        </button>
+      </div>
+      <div class="chapters-layout">
+        <!-- Sidebar list of chapters -->
+        <aside class="chapter-sidebar">
+          <div class="sidebar-title">
+            <span>สารบัญเนื้อหา (9 บท)</span>
+            <span class="text-xs text-dim">ตามหนังสือฉบับเต็ม</span>
+          </div>
+          <div class="chapter-list" id="chapterListContainer">
+            <!-- Rendered by app.js -->
+          </div>
+        </aside>
+
+        <!-- Chapter detailed content -->
+        <main class="chapter-detail-area" id="chapterDetailContainer">
+          <!-- Rendered by app.js -->
+        </main>
+      </div>
+    </section>
+
+    <!-- 2. VIEW: FORMULA DECISION WIZARD -->
+    <section class="view-section" id="view-wizard">
+      <div class="wizard-container">
+        <div class="text-center mb-4">
+          <h2 style="font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 8px;">🧭 เข็มทิศเลือกสูตร (Decision Wizard)</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            สำหรับคนที่เห็นโจทย์แล้วสับสน ไม่รู้ว่าต้องหยิบสูตรไหนมาใช้ ตอบคำถามนำทาง 2-3 ข้อ แล้วระบบจะชี้เป้าสูตรที่ถูกต้องให้ทันที!
+          </p>
+        </div>
+        <div id="decisionWizardContainer">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. VIEW: INTERACTIVE SOLVERS & SPSS OUTPUT DECRYPTER -->
+    <section class="view-section" id="view-solvers">
+      <div class="solvers-grid">
+
+        <!-- Tool 1: Hypothesis Test Simulator -->
+        <div class="solver-panel">
+          <div class="solver-header">
+            <h3 class="solver-title">⚖️ เครื่องจำลองการทดสอบสมมติฐาน (Hypothesis Testing)</h3>
+            <p class="solver-subtitle">ใส่ตัวเลขจากโจทย์ แล้วดูขั้นตอน 5 สเต็ป พร้อมกราฟระบายสีเขตวิกฤตแบบสดๆ</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>ค่าเฉลี่ยสมมติฐาน (μ₀)</label>
+              <input type="number" class="form-control" id="hypo_mu0" value="880" step="any">
+            </div>
+            <div class="form-group">
+              <label>ค่าเฉลี่ยตัวอย่าง (X̄)</label>
+              <input type="number" class="form-control" id="hypo_xbar" value="871" step="any">
+            </div>
+            <div class="form-group">
+              <label>ส่วนเบี่ยงเบนมาตรฐาน (S หรือ σ)</label>
+              <input type="number" class="form-control" id="hypo_s" value="21" step="any">
+            </div>
+            <div class="form-group">
+              <label>ขนาดตัวอย่าง (n)</label>
+              <input type="number" class="form-control" id="hypo_n" value="60">
+            </div>
+            <div class="form-group">
+              <label>ระดับนัยสำคัญ (α)</label>
+              <select class="form-control" id="hypo_alpha">
+                <option value="0.01" selected>0.01 (99% มั่นใจ)</option>
+                <option value="0.05">0.05 (95% มั่นใจ)</option>
+                <option value="0.10">0.10 (90% มั่นใจ)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>ประเภทการทดสอบ</label>
+              <select class="form-control" id="hypo_tail">
+                <option value="left" selected>หางซ้าย (H₁: μ &lt; μ₀)</option>
+                <option value="right">หางขวา (H₁: μ &gt; μ₀)</option>
+                <option value="two">สองหาง (H₁: μ ≠ μ₀)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Normal Distribution Canvas -->
+          <div class="canvas-wrapper">
+            <canvas id="normalCurveCanvas" width="600" height="230"></canvas>
+          </div>
+
+          <!-- Output 5 steps -->
+          <div id="hypoStepsOutput"></div>
+        </div>
+
+        <!-- Tool 2: Simple Regression Lab -->
+        <div class="solver-panel">
+          <div class="solver-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <h3 class="solver-title">📈 ห้องทดลองการถดถอยเชิงเส้น (Regression Lab)</h3>
+              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 4px 10px;" id="btnLoadLuckyData">โหลดข้อมูลบริษัท Lucky (บทที่ 7)</button>
+            </div>
+            <p class="solver-subtitle">คำนวณความชัน b, จุดตัด a, สหสัมพันธ์ r และวาดเส้นแนวโน้ม Scatter Plot อัตโนมัติ</p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>คู่ข้อมูล X, Y (1 บรรทัดต่อ 1 จุดข้อมูล เช่น: 0.8, 22)</label>
+            <textarea class="form-control" id="reg_data_input" rows="4" style="font-family: 'Fira Code', monospace; font-size: 0.85rem;">0.8, 22
+1.0, 28
+1.6, 22
+2.0, 26
+2.2, 34
+2.6, 18
+3.0, 30
+3.0, 38
+4.0, 30
+4.0, 40
+4.0, 50
+4.6, 46</textarea>
+          </div>
+
+          <div class="canvas-wrapper">
+            <canvas id="regressionCanvas" width="600" height="230"></canvas>
+          </div>
+
+          <div id="regressionResultsBox"></div>
+        </div>
+
+      </div>
+
+      <!-- Tool 3: SPSS / Computer Output Interactive Decrypter (บทที่ 8) -->
+      <div class="solver-panel mt-4">
+        <div class="solver-header">
+          <h3 class="solver-title">🖥️ ตัวถอดรหัสผลลัพธ์คอมพิวเตอร์ (SPSS / Excel Output Decrypter)</h3>
+          <p class="solver-subtitle">
+            จำลองผลลัพธ์ตารางข้อสอบจริงของบริษัทอสังหาริมทรัพย์ (บทที่ 8) — <strong>ลองคลิกที่ช่องที่มีเส้นประ</strong> เพื่อดูว่าอาจารย์จะถามอะไร และวิธีเขียนตอบในข้อสอบ!
+          </p>
+        </div>
+
+        <!-- Regression Statistics Table -->
+        <h4 style="font-size: 0.95rem; color: #38bdf8; margin: 12px 0 6px;">1. ตาราง Regression Statistics</h4>
+        <div class="spss-table-wrapper">
+          <table class="spss-table">
+            <tr>
+              <td>Multiple R</td>
+              <td class="spss-clickable-cell" data-title="Multiple R (0.7483)" data-info="<strong>ความหมาย:</strong> คือสัมประสิทธิ์สหสัมพันธ์พหุคูณ วัดความสัมพันธ์รวมระหว่างตัวแปร X ทั้งหมด (ห้องนอน, พื้นที่ใช้สอย, ที่ดิน) กับราคาขายบ้าน Y<br><br>💡 <strong>วิธีตอบข้อสอบ:</strong> มีค่า 0.7483 แสดงว่ากลุ่มตัวแปรอิสระทั้งหมดมีความสัมพันธ์กับราคาขายบ้านในระดับสูง">0.7483 🔍</td>
+            </tr>
+            <tr>
+              <td>R Square</td>
+              <td class="spss-clickable-cell" data-title="R Square (0.5600)" data-info="<strong>ความหมาย:</strong> สัมประสิทธิ์การตัดสินใจพหุคูณ (R²)<br><br>💡 <strong>วิธีตอบข้อสอบ:</strong> ตอบว่า 'ตัวแปรอิสระทั้ง 3 ตัวร่วมกันสามารถอธิบายความผันแปรของราคาขายบ้านได้ 56.00% ส่วนอีก 44% เกิดจากปัจจัยอื่นที่ไม่ได้นำมาศึกษา'">0.5600 🔍</td>
+            </tr>
+            <tr>
+              <td>Adjusted R Square</td>
+              <td class="spss-clickable-cell" data-title="Adjusted R Square (0.5462)" data-info="<strong>ความหมาย:</strong> R² ที่ปรับลดโทษตามจำนวนตัวแปรต้น เพื่อป้องกันการยัดเยียดตัวแปรที่ไม่มีประโยชน์<br><br>💡 <strong>วิธีตอบข้อสอบ:</strong> ใช้สำหรับเปรียบเทียบระหว่างโมเดลที่มีจำนวนตัวแปรต้นต่างกัน โมเดลนี้มีค่า 0.5462">0.5462 🔍</td>
+            </tr>
+            <tr>
+              <td>Standard Error</td>
+              <td>25,023</td>
+            </tr>
+            <tr>
+              <td>Observations</td>
+              <td>100</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- ANOVA Table -->
+        <h4 style="font-size: 0.95rem; color: #38bdf8; margin: 16px 0 6px;">2. ตาราง Analysis of Variance (ANOVA)</h4>
+        <div class="spss-table-wrapper">
+          <table class="spss-table">
+            <thead>
+              <tr>
+                <th>SOURCE</th><th>DF</th><th>SS</th><th>MS</th><th>F</th><th>p-value (Sig)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Regression</td>
+                <td>3</td>
+                <td>76,501,718,347</td>
+                <td>25,500,572,782</td>
+                <td class="spss-clickable-cell" data-title="F Stat (40.73)" data-info="<strong>ความหมาย:</strong> ค่าสถิติ F = MS_reg / MS_res = 25,500,572,782 / 626,135,896 = 40.73<br><br>💡 <strong>วิธีตอบข้อสอบ:</strong> ใช้ทดสอบว่าตัวแบบโดยรวมมีนัยสำคัญหรือไม่ ค่า F สูงมากแสดงว่าปฏิเสธ H₀">40.73 🔍</td>
+                <td class="spss-clickable-cell" data-title="p-value ในตาราง ANOVA (0.000)" data-info="<strong>ความหมาย:</strong> ระดับนัยสำคัญของตัวแบบรวม<br><br>💡 <strong>วิธีตอบข้อสอบ:</strong> เนื่องจาก p = 0.000 &lt; 0.05 จึงปฏิเสธ H₀ สรุปว่าตัวแบบการถดถอยนี้มีนัยสำคัญทางสถิติ (มีตัวแปรอย่างน้อย 1 ตัวที่มีผลต่อราคาขายบ้านจริง)">0.000 🔍</td>
+              </tr>
+              <tr>
+                <td>Residual</td>
+                <td>96</td>
+                <td>60,109,046,053</td>
+                <td>626,135,896</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>99</td>
+                <td>136,610,764,400</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Coefficients Table -->
+        <h4 style="font-size: 0.95rem; color: #38bdf8; margin: 16px 0 6px;">3. ตาราง Coefficients (สัมประสิทธิ์ตัวแปร)</h4>
+        <div class="spss-table-wrapper">
+          <table class="spss-table">
+            <thead>
+              <tr>
+                <th>ตัวแปร</th><th>REG. COEF. (b)</th><th>STD. ERROR</th><th>t Stat</th><th>P-Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Intercept (จุดตัดแกน)</td>
+                <td class="spss-clickable-cell" data-title="Intercept b₀ = 37,718" data-info="<strong>วิธีนำไปเขียนสมการ:</strong> ตัวเลขนี้คือ b₀ ในสมการ Ŷ = 37,718 + ... หมายถึงราคาขายบ้านเมื่อตัวแปร X ทั้งหมดเป็น 0">37,718 🔍</td>
+                <td>14,177</td>
+                <td>2.66</td>
+                <td>0.0091</td>
+              </tr>
+              <tr>
+                <td>Bedrooms (X₁: ห้องนอน)</td>
+                <td class="spss-clickable-cell" data-title="b₁ = 2,306" data-info="<strong>ความหมาย:</strong> ถ้าห้องนอนเพิ่มขึ้น 1 ห้อง (โดยตัวแปรอื่นคงที่) ราคาขายบ้านจะเพิ่มขึ้นเฉลี่ย 2,306 ดอลลาร์">2,306 🔍</td>
+                <td>6,994</td>
+                <td>0.33</td>
+                <td class="spss-clickable-cell" data-title="P-Value ห้องนอน (0.7423)" data-info="<strong>การทดสอบนัยสำคัญ:</strong> p = 0.7423 &gt; 0.05 แสดงว่าตัวแปรห้องนอน <strong>ไม่มีผลต่อราคาขายบ้านอย่างมีนัยสำคัญ</strong> (ไม่ผ่านเกณฑ์)">0.7423 🔍</td>
+              </tr>
+              <tr>
+                <td>House size (X₂: พื้นที่ใช้สอย)</td>
+                <td class="spss-clickable-cell" data-title="b₂ = 74.30" data-info="<strong>ความหมาย:</strong> ถ้าพื้นที่บ้านเพิ่ม 1 ตร.ม. ราคาขายจะเพิ่มเฉลี่ย 74.30 ดอลลาร์">74.30 🔍</td>
+                <td>52.98</td>
+                <td>1.40</td>
+                <td class="spss-clickable-cell" data-title="P-Value พื้นที่บ้าน (0.1640)" data-info="<strong>การทดสอบนัยสำคัญ:</strong> p = 0.1640 &gt; 0.05 แสดงว่าไม่มีผลอย่างมีนัยสำคัญที่ระดับ 0.05">0.1640 🔍</td>
+              </tr>
+              <tr>
+                <td>Lot size (X₃: ขนาดที่ดิน)</td>
+                <td class="spss-clickable-cell" data-title="b₃ = -4.36" data-info="<strong>ความหมาย:</strong> สัมประสิทธิ์ติดลบ b₃ = -4.36"> -4.36 🔍</td>
+                <td>17.02</td>
+                <td>-0.26</td>
+                <td class="spss-clickable-cell" data-title="P-Value ขนาดที่ดิน (0.7982)" data-info="<strong>การทดสอบนัยสำคัญ:</strong> p = 0.7982 &gt; 0.05 ไม่มีผลอย่างมีนัยสำคัญ">0.7982 🔍</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. VIEW: PRACTICE ARENA (ข้อสอบจริงพร้อมคำใบ้) -->
+    <section class="view-section" id="view-practice">
+      <div class="practice-list">
+        <div class="text-center mb-3">
+          <h2 style="font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 6px;">🎯 ตะลุยโจทย์ข้อสอบจริงตามหนังสือ อ.ดร.ชัยวัฒน์</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            ฝึกทำโจทย์ครบทั้ง 9 บท (บทละ 10 ข้อ รวม 90 ข้อ) เลือกตอบแล้วกด <strong>"✉️ ตรวจคำตอบ / ส่งคำตอบ"</strong> เพื่อปลดล็อคเฉลยวิธีทำอย่างละเอียดตามหนังสือ อ.ดร.ชัยวัฒน์ (มีคำใบ้ช่วยคิด 2 ระดับให้ดูได้ตลอดเวลา)
+          </p>
+
+          <!-- Chapter Filter Pills -->
+          <div class="practice-filters-container">
+            <div class="practice-filter-group main-filters">
+              <button class="practice-filter-btn active" data-filter="all">ทั้งหมด (90 ข้อ)</button>
+              <button class="practice-filter-btn highlight-filter" data-filter="final">⭐ เน้นสอบ Final (50 ข้อ: บท 5 - 9)</button>
+            </div>
+            <div class="practice-filter-group chapter-pills">
+              <button class="practice-filter-btn" data-filter="ch1">บท 1 (10 ข้อ)</button>
+              <button class="practice-filter-btn" data-filter="ch2">บท 2 (10 ข้อ)</button>
+              <button class="practice-filter-btn" data-filter="ch3">บท 3 (10 ข้อ)</button>
+              <button class="practice-filter-btn" data-filter="ch4">บท 4 (10 ข้อ)</button>
+              <button class="practice-filter-btn final-tag" data-filter="ch5">บท 5 (10 ข้อ)</button>
+              <button class="practice-filter-btn final-tag" data-filter="ch6">บท 6 (10 ข้อ)</button>
+              <button class="practice-filter-btn final-tag" data-filter="ch7">บท 7 (10 ข้อ)</button>
+              <button class="practice-filter-btn final-tag" data-filter="ch8">บท 8 (10 ข้อ)</button>
+              <button class="practice-filter-btn final-tag" data-filter="ch9">บท 9 (10 ข้อ)</button>
+            </div>
+            <div class="practice-stats-bar">
+              <span id="practiceCountText">กำลังแสดง 90 ข้อ</span>
+              <span id="practiceScoreText">คะแนนสะสม: 0 ข้อที่ถูกต้อง</span>
+            </div>
+          </div>
+        </div>
+        <div id="practiceArenaList">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. VIEW: STATISTICAL TABLES & QUICK FORMULA CARDS -->
+    <section class="view-section" id="view-tables">
+      <div class="tables-grid">
+
+        <!-- Z-Table -->
+        <div class="table-panel">
+          <h3>ตารางค่าวิกฤต Z (Standard Normal Distribution)</h3>
+          <p>พื้นที่และค่าวิกฤตยอดฮิตที่อาจารย์มักนำมาออกสอบ</p>
+          <div class="spss-table-wrapper">
+            <table class="data-table-styled">
+              <thead>
+                <tr><th>ค่า Z</th><th>พื้นที่สะสม / ระดับความเชื่อมั่นที่ตรงกัน</th></tr>
+              </thead>
+              <tbody id="zTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- t-Table -->
+        <div class="table-panel">
+          <h3>ตารางค่าวิกฤต t (Student's t-Distribution)</h3>
+          <p>เปิดตาม degree of freedom (df = n - 1) และระดับนัยสำคัญ α</p>
+          <div class="spss-table-wrapper">
+            <table class="data-table-styled">
+              <thead>
+                <tr>
+                  <th>df</th><th>t (0.05)</th><th>t (0.025 / 95% 2-tail)</th><th>t (0.005 / 99% 2-tail)</th>
+                </tr>
+              </thead>
+              <tbody id="tTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
