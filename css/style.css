@@ -54,10 +54,21 @@
   --shadow-hover: 0 16px 38px -10px rgba(15, 23, 42, 0.12);
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-wrap: break-word;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -66,8 +77,13 @@ body {
   color: var(--color-primary);
   line-height: 1.6;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   overflow-x: hidden;
   position: relative;
+  box-sizing: border-box;
+  overscroll-behavior-x: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -95,9 +111,12 @@ body {
 
 .editorial-video-backdrop {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: -10;
   overflow: hidden;
   background-color: var(--color-bg-basis);
@@ -1937,7 +1956,12 @@ canvas {
 /* Modal */
 .custom-modal-backdrop {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   z-index: 1000;
@@ -2497,7 +2521,7 @@ canvas {
 /* Variables Dynamic Grid */
 .variables-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
   gap: 24px;
 }
 
@@ -2932,6 +2956,50 @@ canvas {
 button, a, input, select, label {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+}
+
+/* Universal Horizontal Scroll Containers - Smooth Touch & Contained Overscroll */
+.main-nav-bar,
+.variables-category-pills,
+.jump-symbols-strip,
+.chapter-list,
+.subtab-nav,
+.practice-filters-container,
+.var-formula-math-display,
+.formula-math-display,
+.katex-display,
+.table-responsive,
+.table-panel,
+.spss-table-wrapper {
+  touch-action: pan-x pan-y !important;
+  overscroll-behavior-x: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* KaTeX Global Containment */
+.katex-display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 0 !important;
+}
+
+.katex {
+  max-width: 100% !important;
+}
+
+/* Responsive Media & Canvas Limits */
+canvas, img, video, svg {
+  max-width: 100% !important;
+}
+
+/* Base Inputs - Ensure 16px to prevent iOS Safari auto-zoom */
+@media (max-width: 1024px) {
+  input, select, textarea, .form-control, #variableSearchInput {
+    font-size: 16px !important;
+  }
 }
 
 /* =========================================================================
