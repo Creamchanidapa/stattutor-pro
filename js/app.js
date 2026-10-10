@@ -42,6 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetSec = document.getElementById(`view-${tab}`);
     if (targetSec) targetSec.classList.add("active");
 
+    // Auto-scroll active tab into horizontal view on mobile & iPad
+    const activeBtn = document.querySelector(`.nav-btn[data-tab="${tab}"]`);
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+
     if (tab === "solvers") {
       setTimeout(updateHypoCanvas, 50);
       setTimeout(updateRegressionCanvas, 50);
@@ -50,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (shouldScroll) {
       const mainApp = document.querySelector(".app-container");
       if (mainApp) {
-        const topOffset = mainApp.getBoundingClientRect().top + window.pageYOffset - 130;
+        const offsetAdjustment = window.innerWidth <= 640 ? 95 : 125;
+        const topOffset = mainApp.getBoundingClientRect().top + window.pageYOffset - offsetAdjustment;
         window.scrollTo({ top: Math.max(0, topOffset), behavior: "smooth" });
       }
     }

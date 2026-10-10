@@ -2926,90 +2926,672 @@ canvas {
 }
 
 /* =========================================================================
-   RESPONSIVE DESIGN (EDITORIAL & MOBILE SPEC)
+   TOUCH & MOBILE ERGONOMICS (GLOBAL)
    ========================================================================= */
 
+button, a, input, select, label {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN SYSTEM (IPAD, TABLET & MOBILE PHONES)
+   ========================================================================= */
+
+/* --- 1. TABLET LANDSCAPE & IPAD PRO (1024px and below) --- */
 @media (max-width: 1024px) {
   .editorial-nav-container {
-    padding: 18px 24px;
-    gap: 20px;
-  }
-  .nav-col-links {
-    gap: 24px;
-  }
-  .editorial-hero-h1 {
-    font-size: 64px;
-    letter-spacing: -1.8px;
-  }
-  .chapters-layout {
-    grid-template-columns: 1fr;
-  }
-  .chapter-sidebar {
-    position: static;
-    max-height: none;
-  }
-  .solvers-grid, .tables-grid, .variables-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  /* Center Col: Hidden on mobile per Prompt Spec */
-  .nav-col-links {
-    display: none;
-  }
-  .editorial-nav-container {
-    grid-template-columns: 1fr auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .editorial-nav-container {
-    padding: 16px 20px;
-  }
-  .brand-editorial-title {
-    font-size: 26px;
+    padding: 14px 24px;
+    gap: 16px;
   }
   
-  /* H1 Mobile per Prompt Spec: font-size 48px, line-height: 0.95, letter-spacing tight */
+  .nav-col-links {
+    gap: 20px;
+  }
+  
   .editorial-hero-h1 {
-    font-size: 48px;
-    line-height: 0.95;
+    font-size: clamp(40px, 6vw, 60px);
     letter-spacing: -1.5px;
   }
   
+  /* iPad 2-Column Balanced Grid for Variable Cards */
+  .variables-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px;
+  }
+  
+  .chapters-layout {
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+  }
+  
+  .solvers-grid, .tables-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* --- 2. IPAD PORTRAIT & MEDIUM TABLETS (899px and below) --- */
+@media (max-width: 899px) {
+  /* Center Col: Hidden on tablet portrait; sticky nav bar handles navigation */
+  .nav-col-links {
+    display: none !important;
+  }
+  
+  .editorial-nav-container {
+    grid-template-columns: 1fr auto;
+    padding: 12px 20px;
+  }
+  
+  .main-nav-bar {
+    top: 66px;
+    justify-content: flex-start;
+    padding: 8px 16px;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .main-nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* iPad Portrait Chapters Layout: Horizontal Touch Selector */
+  .chapters-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  .chapter-sidebar {
+    position: static;
+    max-height: none;
+    padding: 16px 18px;
+  }
+  
+  .chapter-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none;
+    gap: 10px;
+    padding-bottom: 6px;
+  }
+  .chapter-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .chapter-card-item {
+    min-width: 220px !important;
+    max-width: 250px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Category Pills: Horizontal Carousel on iPad Portrait */
+  .variables-category-pills {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none;
+    padding: 2px 4px 8px 4px;
+    gap: 8px;
+  }
+  .variables-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .var-category-btn {
+    flex-shrink: 0;
+  }
+  
+  .variables-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px;
+  }
+}
+
+/* --- 3. MOBILE PHONES (640px and below - iPhone & Android) --- */
+@media (max-width: 640px) {
+  /* Prevent iOS Safari Automatic Zoom on Inputs */
+  input[type="text"],
+  input[type="number"],
+  .form-control,
+  #variableSearchInput {
+    font-size: 16px !important;
+  }
+
+  /* Compact Native-Feel Top Header */
+  .editorial-nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .editorial-nav-container {
+    padding: 10px 16px;
+    min-height: 52px;
+  }
+  
+  .brand-editorial-title {
+    font-size: 21px;
+    line-height: 1.1;
+  }
+  
+  .brand-editorial-caption {
+    display: none;
+  }
+  
+  .nav-col-action .pill-btn-sm {
+    display: none; /* Redundant on phone, saving space for countdown */
+  }
+  
+  .exam-countdown-chip {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  
+  /* Sticky Main Nav Bar for Mobile */
+  .main-nav-bar {
+    top: 52px;
+    padding: 8px 12px;
+    gap: 6px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border-medium);
+  }
+  .main-nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .nav-btn {
+    font-size: 0.8rem;
+    padding: 8px 14px;
+    min-height: 42px;
+    border-radius: 9999px;
+    flex-shrink: 0;
+  }
+  
+  /* Main Container */
+  .app-container {
+    padding: 14px 12px 40px;
+  }
+  
+  /* Hero Section */
+  .editorial-hero-section {
+    padding: 32px 14px 36px;
+    min-height: auto;
+  }
+  
+  .hero-sub-badge {
+    font-size: 11px;
+    padding: 6px 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  
+  .editorial-hero-h1 {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  
   .editorial-hero-paragraph {
-    font-size: 16px;
-    margin-bottom: 36px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    padding: 0 4px;
   }
   
   .editorial-hero-cta-wrapper {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
+    margin-bottom: 24px;
   }
   
   .pill-btn-hero {
     width: 100%;
-    padding: 16px 32px;
+    min-height: 48px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    justify-content: center;
   }
   
+  /* Hero Metrics 2x2 Grid */
+  .hero-metrics-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .metric-pill {
+    padding: 10px 12px;
+    text-align: center;
+    border-radius: 12px;
+  }
+  
+  .metric-num {
+    font-size: 1.3rem;
+  }
+  
+  .metric-lbl {
+    font-size: 11px;
+  }
+  
+  /* Study Status Sub-bar */
+  .study-status-bar {
+    padding: 12px 14px;
+  }
+  
+  .status-bar-inner {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .status-col-countdown,
+  .status-col-progress,
+  .status-col-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .countdown-boxes {
+    gap: 4px;
+  }
+  
+  .time-box {
+    min-width: 40px;
+    padding: 4px 6px;
+  }
+  
+  .time-box .num {
+    font-size: 1rem;
+  }
+  
+  .time-box .lbl {
+    font-size: 9px;
+  }
+  
+  /* Variables Glossary Page */
   .variables-editorial-title {
-    font-size: 34px;
+    font-size: 24px;
+    line-height: 1.25;
+  }
+  
+  .variables-editorial-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
   
   .variables-search-filter-card {
     flex-direction: column;
-    border-radius: 20px;
-    padding: 12px 16px;
+    border-radius: 16px;
+    padding: 10px 14px;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .variables-search-input-wrapper {
+    width: 100%;
+  }
+  
+  .variables-search-input-wrapper input {
+    min-height: 44px;
+    font-size: 16px !important;
   }
   
   .variables-counter-badge {
     align-self: flex-start;
+    font-size: 11px;
+    padding: 4px 10px;
   }
   
-  .main-nav-bar {
-    top: 73px;
+  /* Category Pills on Phone: Smooth Horizontal Carousel */
+  .variables-category-pills {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none;
+    padding: 2px 2px 8px 2px;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .variables-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .var-category-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 12px;
+    min-height: 38px;
+  }
+  
+  /* Quick Jump Bar for Phone Thumbs */
+  .variables-quick-jump-container {
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .jump-label {
+    font-size: 10px;
+  }
+  
+  .jump-symbols-strip {
+    gap: 6px;
+  }
+  
+  .jump-symbol-pill {
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 14px;
+    padding: 2px 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Variable Cards on Phone: 1 Column Full Width */
+  .variables-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  
+  .var-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+    gap: 14px;
+  }
+  
+  .var-card-header {
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .var-symbol-avatar {
+    min-width: 52px;
+    height: 52px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 4px;
+  }
+  .var-symbol-avatar .katex {
+    font-size: 1.15rem;
+  }
+  
+  .var-thai-name {
+    font-size: 1.05rem;
+  }
+  
+  .var-eng-name {
+    font-size: 0.78rem;
+  }
+  
+  .var-chap-badge, .var-cat-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  /* Authentic Formula Box on Phone */
+  .var-card-formula-banner {
+    padding: 10px 12px;
+    border-radius: 10px;
+    gap: 6px;
+  }
+  
+  .var-formula-badge-label {
+    font-size: 0.7rem;
+  }
+  
+  .var-formula-math-display {
+    min-height: 48px;
+    padding: 8px 10px;
+    font-size: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  .var-formula-math-display .katex {
+    font-size: 1.05rem;
+  }
+  
+  /* Card Content Sections */
+  .var-section-block {
+    padding: 10px 12px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    border-radius: 10px;
+  }
+  
+  .var-section-label {
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+  }
+  
+  .var-card-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    padding-top: 10px;
+  }
+  
+  .var-btn-copy, .var-btn-link {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Roadmap on Phone */
+  .roadmap-title {
+    font-size: 1.4rem;
+  }
+  
+  .roadmap-checklist-bar {
+    padding: 14px 14px;
+  }
+  
+  .checklist-items-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .step-check-item {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 0.86rem;
+  }
+  
+  .roadmap-step-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  
+  .step-card-header {
+    gap: 12px;
+  }
+  
+  .step-num-badge {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .step-title {
+    font-size: 1.12rem;
+  }
+  
+  .roadmap-todo-list {
+    padding: 14px 16px;
+  }
+  
+  .roadmap-todo-list ul {
+    padding-left: 16px;
+    font-size: 0.88rem;
+  }
+  
+  .roadmap-jump-btn {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+    font-size: 0.88rem;
+  }
+  
+  /* 9 Chapters on Phone */
+  .chapter-detail-area {
+    padding: 16px 14px;
+    border-radius: 16px;
+    min-height: auto;
+  }
+  
+  .chapter-name-lg {
+    font-size: 1.25rem;
+  }
+  
+  .subtab-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  .subtab-nav::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .subtab-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    min-height: 40px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .formula-card, .example-card, .concept-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+  
+  .formula-math-display {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 14px 12px;
+    font-size: 1.1rem;
+    min-height: 60px;
+  }
+  .formula-math-display .katex {
+    font-size: 1.15rem;
+  }
+  
+  /* 90 Questions on Phone */
+  .practice-filters-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .practice-filter-group {
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    padding-bottom: 6px;
+  }
+  
+  .practice-filter-btn {
+    flex-shrink: 0;
+    min-height: 38px;
+  }
+  
+  .practice-stats-bar {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 14px;
+  }
+  
+  .practice-item-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  
+  .p-title {
+    font-size: 1.1rem;
+  }
+  
+  .p-question {
+    padding: 14px 14px;
+    font-size: 0.92rem;
+  }
+  
+  .p-option-item {
+    min-height: 50px;
+    padding: 12px 14px;
+    gap: 12px;
+    font-size: 0.92rem;
+  }
+  
+  .opt-bullet {
+    min-width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+  
+  .p-actions-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .btn-submit-answer, .btn-retry-answer {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+  }
+  
+  /* Decision Wizard on Phone */
+  .wizard-question-card, .wizard-result-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  
+  .wizard-question-title {
+    font-size: 1.25rem;
+    margin-bottom: 18px;
+  }
+  
+  .wizard-opt-btn {
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    min-height: 50px;
+  }
+  
+  /* Solvers & Tables on Phone */
+  .solver-panel {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  
+  .canvas-wrapper {
+    padding: 8px;
+  }
+  
+  .spss-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .spss-table th, .spss-table td {
+    padding: 8px 10px;
+    font-size: 0.82rem;
   }
 }
 
