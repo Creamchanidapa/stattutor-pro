@@ -3134,41 +3134,65 @@ canvas, img, video, svg {
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .editorial-nav-container {
-    padding: 10px 16px;
-    min-height: 52px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    min-height: 50px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
   }
   
+  .nav-col-brand {
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+  }
+
   .brand-editorial-title {
-    font-size: 21px;
-    line-height: 1.1;
+    font-size: 20px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
   }
   
   .brand-editorial-caption {
-    display: none;
+    display: none !important;
+  }
+
+  .nav-col-action {
+    flex-shrink: 0 !important;
   }
   
   .nav-col-action .pill-btn-sm {
-    display: none; /* Redundant on phone, saving space for countdown */
+    display: none !important; /* Redundant on phone, saving space for countdown */
   }
   
   .exam-countdown-chip {
-    padding: 5px 10px;
-    font-size: 11px;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
   }
   
   /* Sticky Main Nav Bar for Mobile */
   .main-nav-bar {
-    top: 52px;
-    padding: 8px 12px;
-    gap: 6px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    border-bottom: 1px solid var(--border-medium);
+    top: 50px !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    border-bottom: 1px solid var(--border-medium) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   .main-nav-bar::-webkit-scrollbar {
     display: none;
@@ -3184,108 +3208,232 @@ canvas, img, video, svg {
   
   /* Main Container */
   .app-container {
-    padding: 14px 12px 40px;
+    padding: 14px 10px 40px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
   }
   
   /* Hero Section */
   .editorial-hero-section {
-    padding: 32px 14px 36px;
-    min-height: auto;
+    padding: 24px 10px 28px !important;
+    min-height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .editorial-hero-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .stagger-entrance-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   
   .hero-sub-badge {
-    font-size: 11px;
-    padding: 6px 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-    margin-bottom: 16px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px 6px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+  }
+
+  .hero-sub-badge .hero-tag {
+    display: inline !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .hero-sep {
+    display: inline !important;
+    margin: 0 2px !important;
   }
   
   .editorial-hero-h1 {
-    font-size: clamp(28px, 8vw, 38px);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 14px;
+    font-size: clamp(24px, 7vw, 30px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 4px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .editorial-hero-h1 em {
+    display: inline !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.28) !important;
   }
   
   .editorial-hero-paragraph {
-    font-size: 14.5px;
-    line-height: 1.6;
-    margin-bottom: 24px;
-    padding: 0 4px;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    padding: 0 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
   
   .editorial-hero-cta-wrapper {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-    margin-bottom: 24px;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
   }
   
   .pill-btn-hero {
-    width: 100%;
-    min-height: 48px;
-    padding: 14px 18px;
-    font-size: 14.5px;
-    justify-content: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
   }
   
   /* Hero Metrics 2x2 Grid */
   .hero-metrics-bar {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .metric-pill {
-    padding: 10px 12px;
-    text-align: center;
-    border-radius: 12px;
+    padding: 8px 10px !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
   }
   
   .metric-num {
-    font-size: 1.3rem;
+    font-size: 1.25rem !important;
   }
   
   .metric-lbl {
-    font-size: 11px;
+    font-size: 10.5px !important;
+    white-space: normal !important;
+    text-align: center !important;
   }
   
   /* Study Status Sub-bar */
   .study-status-bar {
-    padding: 12px 14px;
+    padding: 12px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   
   .status-bar-inner {
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
   }
   
-  .status-col-countdown,
-  .status-col-progress,
-  .status-col-toggle {
-    width: 100%;
-    justify-content: space-between;
+  .status-col-countdown {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .status-icon {
+    display: none !important; /* Save space on mobile */
+  }
+
+  .status-text-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .status-label {
+    font-size: 11px !important;
+    text-align: center !important;
+    white-space: normal !important;
+    color: var(--danger) !important;
   }
   
   .countdown-boxes {
-    gap: 4px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .time-box {
-    min-width: 40px;
-    padding: 4px 6px;
+    min-width: 36px !important;
+    padding: 4px 6px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
   }
   
   .time-box .num {
-    font-size: 1rem;
+    font-size: 0.95rem !important;
   }
   
   .time-box .lbl {
-    font-size: 9px;
+    font-size: 8.5px !important;
+  }
+
+  .status-col-progress,
+  .status-col-toggle {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   /* Variables Glossary Page */
@@ -3373,63 +3521,95 @@ canvas, img, video, svg {
   
   /* Variable Cards on Phone: 1 Column Full Width */
   .variables-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
   }
   
   .var-card {
-    padding: 18px 14px;
-    border-radius: 16px;
-    gap: 14px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    gap: 12px !important;
+    overflow: hidden !important;
   }
   
   .var-card-header {
-    gap: 12px;
-    padding-bottom: 12px;
+    gap: 10px !important;
+    padding-bottom: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
   }
   
   .var-symbol-avatar {
-    min-width: 52px;
-    height: 52px;
-    font-size: 20px;
-    border-radius: 12px;
-    padding: 4px;
+    min-width: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 18px !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+    flex-shrink: 0 !important;
   }
   .var-symbol-avatar .katex {
-    font-size: 1.15rem;
+    font-size: 1.1rem !important;
+  }
+
+  .var-title-group {
+    min-width: 0 !important;
+    flex: 1 !important;
+    overflow: hidden !important;
   }
   
   .var-thai-name {
-    font-size: 1.05rem;
+    font-size: 1rem !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
   
   .var-eng-name {
-    font-size: 0.78rem;
+    font-size: 0.75rem !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
   
   .var-chap-badge, .var-cat-badge {
-    font-size: 10px;
-    padding: 2px 6px;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
   }
   
   /* Authentic Formula Box on Phone */
   .var-card-formula-banner {
-    padding: 10px 12px;
-    border-radius: 10px;
-    gap: 6px;
+    padding: 10px 10px !important;
+    border-radius: 10px !important;
+    gap: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .var-formula-badge-label {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
   
   .var-formula-math-display {
-    min-height: 48px;
-    padding: 8px 10px;
-    font-size: 1rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    max-width: 100%;
+    min-height: 44px !important;
+    padding: 6px 8px !important;
+    font-size: 0.95rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    text-align: center !important;
   }
   .var-formula-math-display .katex {
     font-size: 1.05rem;
