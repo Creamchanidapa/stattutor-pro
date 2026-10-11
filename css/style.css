@@ -2984,14 +2984,42 @@ button, a, input, select, label {
   overflow-x: auto !important;
   overflow-y: hidden !important;
   padding: 4px 0 !important;
+  box-sizing: border-box !important;
 }
 
 .katex {
   max-width: 100% !important;
+  white-space: normal !important;
+}
+
+.katex-html {
+  max-width: 100% !important;
+}
+
+/* Ensure invisible MathML never causes horizontal overflow in WebKit/Safari */
+.katex-mathml {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.katex-mathml * {
+  max-width: 1px !important;
+  overflow: hidden !important;
 }
 
 /* Responsive Media & Canvas Limits */
-canvas, img, video, svg {
+canvas, img, video {
+  max-width: 100% !important;
+}
+
+svg:not(.katex svg) {
   max-width: 100% !important;
 }
 
@@ -3119,17 +3147,45 @@ canvas, img, video, svg {
   }
 }
 
-/* --- 3. MOBILE PHONES (640px and below - iPhone & Android) --- */
-@media (max-width: 640px) {
+/* --- 3. UNIVERSAL MOBILE RESPONSIVE SYSTEM (768px and below) ---
+   Applied consistently across ALL 7 PAGES, TABS, CARDS & SECTIONS */
+@media (max-width: 768px) {
   /* Prevent iOS Safari Automatic Zoom on Inputs */
   input[type="text"],
   input[type="number"],
+  textarea,
+  select,
   .form-control,
   #variableSearchInput {
     font-size: 16px !important;
   }
 
-  /* Compact Native-Feel Top Header */
+  /* -------------------------------------------------------------
+     GLOBAL CONTAINMENT: ALL CONTAINERS MUST FIT 100% OF VIEWPORT
+     ------------------------------------------------------------- */
+  .app-container,
+  .view-section,
+  .variables-page-container,
+  .roadmap-container,
+  .chapters-layout,
+  .wizard-container,
+  .solvers-grid,
+  .practice-list,
+  .tables-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .app-container {
+    padding: 14px 10px 48px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* -------------------------------------------------------------
+     TOP HEADER & BRAND
+     ------------------------------------------------------------- */
   .editorial-nav-wrapper {
     position: sticky;
     top: 0;
@@ -3138,7 +3194,7 @@ canvas, img, video, svg {
     max-width: 100%;
     box-sizing: border-box;
   }
-  
+
   .editorial-nav-container {
     display: flex !important;
     justify-content: space-between !important;
@@ -3148,39 +3204,39 @@ canvas, img, video, svg {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
-  
+
   .nav-col-brand {
     min-width: 0 !important;
     flex-shrink: 1 !important;
   }
 
   .brand-editorial-title {
-    font-size: 20px !important;
+    font-size: 19px !important;
     line-height: 1.1 !important;
     white-space: nowrap !important;
   }
-  
-  .brand-editorial-caption {
+
+  .brand-editorial-caption,
+  .nav-col-links,
+  .nav-col-action .pill-btn-sm {
     display: none !important;
   }
 
   .nav-col-action {
     flex-shrink: 0 !important;
   }
-  
-  .nav-col-action .pill-btn-sm {
-    display: none !important; /* Redundant on phone, saving space for countdown */
-  }
-  
+
   .exam-countdown-chip {
     padding: 4px 8px !important;
     font-size: 11px !important;
     white-space: nowrap !important;
   }
-  
-  /* Sticky Main Nav Bar for Mobile */
+
+  /* -------------------------------------------------------------
+     STICKY NAVIGATION BAR (7 TABS)
+     ------------------------------------------------------------- */
   .main-nav-bar {
     top: 50px !important;
     padding: 8px 10px !important;
@@ -3197,25 +3253,19 @@ canvas, img, video, svg {
   .main-nav-bar::-webkit-scrollbar {
     display: none;
   }
-  
+
   .nav-btn {
-    font-size: 0.8rem;
-    padding: 8px 14px;
-    min-height: 42px;
-    border-radius: 9999px;
-    flex-shrink: 0;
+    font-size: 0.8rem !important;
+    padding: 8px 14px !important;
+    min-height: 42px !important;
+    border-radius: 9999px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
   }
-  
-  /* Main Container */
-  .app-container {
-    padding: 14px 10px 40px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-  }
-  
-  /* Hero Section */
+
+  /* -------------------------------------------------------------
+     HERO SECTION
+     ------------------------------------------------------------- */
   .editorial-hero-section {
     padding: 24px 10px 28px !important;
     min-height: auto !important;
@@ -3225,7 +3275,8 @@ canvas, img, video, svg {
     overflow: hidden !important;
   }
 
-  .editorial-hero-container {
+  .editorial-hero-container,
+  .stagger-entrance-container {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -3233,13 +3284,6 @@ canvas, img, video, svg {
     padding: 0 !important;
   }
 
-  .stagger-entrance-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-  }
-  
   .hero-sub-badge {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -3261,14 +3305,8 @@ canvas, img, video, svg {
   .hero-sub-badge .hero-tag {
     display: inline !important;
     white-space: normal !important;
-    text-align: center !important;
   }
 
-  .hero-sep {
-    display: inline !important;
-    margin: 0 2px !important;
-  }
-  
   .editorial-hero-h1 {
     font-size: clamp(24px, 7vw, 30px) !important;
     line-height: 1.15 !important;
@@ -3288,7 +3326,7 @@ canvas, img, video, svg {
     white-space: normal !important;
     border-bottom: 2px solid rgba(15, 23, 42, 0.28) !important;
   }
-  
+
   .editorial-hero-paragraph {
     font-size: 14px !important;
     line-height: 1.6 !important;
@@ -3300,7 +3338,7 @@ canvas, img, video, svg {
     word-break: break-word !important;
     overflow-wrap: break-word !important;
   }
-  
+
   .editorial-hero-cta-wrapper {
     flex-direction: column !important;
     width: 100% !important;
@@ -3309,7 +3347,7 @@ canvas, img, video, svg {
     gap: 10px !important;
     margin-bottom: 20px !important;
   }
-  
+
   .pill-btn-hero {
     width: 100% !important;
     max-width: 100% !important;
@@ -3321,8 +3359,7 @@ canvas, img, video, svg {
     text-align: center !important;
     white-space: normal !important;
   }
-  
-  /* Hero Metrics 2x2 Grid */
+
   .hero-metrics-bar {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -3331,7 +3368,7 @@ canvas, img, video, svg {
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .metric-pill {
     padding: 8px 10px !important;
     text-align: center !important;
@@ -3341,18 +3378,10 @@ canvas, img, video, svg {
     box-sizing: border-box !important;
     justify-content: center !important;
   }
-  
-  .metric-num {
-    font-size: 1.25rem !important;
-  }
-  
-  .metric-lbl {
-    font-size: 10.5px !important;
-    white-space: normal !important;
-    text-align: center !important;
-  }
-  
-  /* Study Status Sub-bar */
+
+  /* -------------------------------------------------------------
+     STUDY STATUS BAR & COUNTDOWN
+     ------------------------------------------------------------- */
   .study-status-bar {
     padding: 12px 10px !important;
     width: 100% !important;
@@ -3360,7 +3389,7 @@ canvas, img, video, svg {
     box-sizing: border-box !important;
     overflow: hidden !important;
   }
-  
+
   .status-bar-inner {
     display: flex !important;
     flex-direction: column !important;
@@ -3370,7 +3399,7 @@ canvas, img, video, svg {
     align-items: stretch !important;
     box-sizing: border-box !important;
   }
-  
+
   .status-col-countdown {
     display: flex !important;
     flex-direction: column !important;
@@ -3384,7 +3413,7 @@ canvas, img, video, svg {
   }
 
   .status-icon {
-    display: none !important; /* Save space on mobile */
+    display: none !important;
   }
 
   .status-text-group {
@@ -3403,7 +3432,7 @@ canvas, img, video, svg {
     white-space: normal !important;
     color: var(--danger) !important;
   }
-  
+
   .countdown-boxes {
     display: flex !important;
     justify-content: center !important;
@@ -3413,113 +3442,84 @@ canvas, img, video, svg {
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .time-box {
     min-width: 36px !important;
     padding: 4px 6px !important;
     flex-shrink: 0 !important;
     box-sizing: border-box !important;
   }
-  
-  .time-box .num {
-    font-size: 0.95rem !important;
-  }
-  
-  .time-box .lbl {
-    font-size: 8.5px !important;
-  }
 
   .status-col-progress,
   .status-col-toggle {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
   }
-  
-  /* Variables Glossary Page */
+
+  /* -------------------------------------------------------------
+     PAGE 1: VARIABLES GLOSSARY (ถอดรหัสตัวแปร)
+     ------------------------------------------------------------- */
   .variables-editorial-title {
-    font-size: 24px;
-    line-height: 1.25;
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
-  
+
   .variables-editorial-desc {
-    font-size: 13.5px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 16px !important;
+    padding: 0 4px !important;
   }
-  
+
   .variables-search-filter-card {
-    flex-direction: column;
-    border-radius: 16px;
-    padding: 10px 14px;
-    gap: 10px;
-    margin-bottom: 16px;
+    flex-direction: column !important;
+    border-radius: 16px !important;
+    padding: 10px 12px !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .variables-search-input-wrapper {
-    width: 100%;
+    width: 100% !important;
   }
-  
-  .variables-search-input-wrapper input {
-    min-height: 44px;
-    font-size: 16px !important;
-  }
-  
-  .variables-counter-badge {
-    align-self: flex-start;
-    font-size: 11px;
-    padding: 4px 10px;
-  }
-  
-  /* Category Pills on Phone: Smooth Horizontal Carousel */
+
   .variables-category-pills {
     justify-content: flex-start !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none;
-    padding: 2px 2px 8px 2px;
-    gap: 6px;
-    margin-bottom: 14px;
+    padding: 2px 2px 8px 2px !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
   }
-  .variables-category-pills::-webkit-scrollbar {
-    display: none;
-  }
-  
+
   .var-category-btn {
-    flex-shrink: 0;
-    padding: 8px 14px;
-    font-size: 12px;
-    min-height: 38px;
+    flex-shrink: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 38px !important;
   }
-  
-  /* Quick Jump Bar for Phone Thumbs */
+
   .variables-quick-jump-container {
-    padding: 8px 12px;
-    gap: 8px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    padding: 8px 10px !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
-  
-  .jump-label {
-    font-size: 10px;
-  }
-  
-  .jump-symbols-strip {
-    gap: 6px;
-  }
-  
-  .jump-symbol-pill {
-    min-width: 38px;
-    min-height: 38px;
-    font-size: 14px;
-    padding: 2px 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Variable Cards on Phone: 1 Column Full Width */
+
   .variables-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -3528,7 +3528,7 @@ canvas, img, video, svg {
     gap: 16px !important;
     box-sizing: border-box !important;
   }
-  
+
   .var-card {
     width: 100% !important;
     max-width: 100% !important;
@@ -3539,7 +3539,7 @@ canvas, img, video, svg {
     gap: 12px !important;
     overflow: hidden !important;
   }
-  
+
   .var-card-header {
     gap: 10px !important;
     padding-bottom: 12px !important;
@@ -3548,7 +3548,7 @@ canvas, img, video, svg {
     box-sizing: border-box !important;
     min-width: 0 !important;
   }
-  
+
   .var-symbol-avatar {
     min-width: 48px !important;
     width: 48px !important;
@@ -3558,34 +3558,25 @@ canvas, img, video, svg {
     padding: 4px !important;
     flex-shrink: 0 !important;
   }
-  .var-symbol-avatar .katex {
-    font-size: 1.1rem !important;
-  }
 
   .var-title-group {
     min-width: 0 !important;
     flex: 1 !important;
     overflow: hidden !important;
   }
-  
+
   .var-thai-name {
     font-size: 1rem !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
   }
-  
+
   .var-eng-name {
     font-size: 0.75rem !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
   }
-  
-  .var-chap-badge, .var-cat-badge {
-    font-size: 10px !important;
-    padding: 2px 6px !important;
-  }
-  
-  /* Authentic Formula Box on Phone */
+
   .var-card-formula-banner {
     padding: 10px 10px !important;
     border-radius: 10px !important;
@@ -3594,11 +3585,7 @@ canvas, img, video, svg {
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
-  .var-formula-badge-label {
-    font-size: 0.7rem !important;
-  }
-  
+
   .var-formula-math-display {
     min-height: 44px !important;
     padding: 6px 8px !important;
@@ -3611,235 +3598,486 @@ canvas, img, video, svg {
     display: block !important;
     text-align: center !important;
   }
-  .var-formula-math-display .katex {
-    font-size: 1.05rem;
-  }
-  
-  /* Card Content Sections */
+
   .var-section-block {
-    padding: 10px 12px;
-    font-size: 0.86rem;
-    line-height: 1.6;
-    border-radius: 10px;
+    padding: 10px 10px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
   }
-  
-  .var-section-label {
-    font-size: 0.7rem;
-    margin-bottom: 3px;
-  }
-  
+
   .var-card-footer {
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
-    padding-top: 10px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+    padding-top: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .var-btn-copy, .var-btn-link {
-    width: 100%;
-    min-height: 42px;
-    justify-content: center;
-    text-align: center;
+    width: 100% !important;
+    min-height: 42px !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
-  
-  /* Roadmap on Phone */
+
+  /* -------------------------------------------------------------
+     PAGE 2: ROADMAP (ลำดับติวสอบ 5 สเต็ป)
+     ------------------------------------------------------------- */
+  .roadmap-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .roadmap-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem !important;
+    word-break: break-word !important;
   }
-  
+
   .roadmap-checklist-bar {
-    padding: 14px 14px;
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .checklist-items-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
   }
-  
+
   .step-check-item {
-    min-height: 44px;
-    padding: 10px 12px;
-    font-size: 0.86rem;
+    min-height: 44px !important;
+    padding: 10px 12px !important;
+    font-size: 0.86rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
+  .roadmap-timeline {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 18px !important;
+  }
+
   .roadmap-step-card {
-    padding: 18px 14px;
-    border-radius: 16px;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .step-card-header {
-    gap: 12px;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
-  .step-num-badge {
-    padding: 6px 10px;
-    font-size: 0.75rem;
-  }
-  
+
   .step-title {
-    font-size: 1.12rem;
+    font-size: 1.1rem !important;
+    word-break: break-word !important;
   }
-  
+
+  .roadmap-why-box {
+    padding: 12px 14px !important;
+    font-size: 0.88rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .roadmap-todo-list {
-    padding: 14px 16px;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .roadmap-todo-list ul {
-    padding-left: 16px;
-    font-size: 0.88rem;
+    padding-left: 14px !important;
+    font-size: 0.86rem !important;
   }
-  
+
   .roadmap-jump-btn {
-    width: 100%;
-    min-height: 46px;
-    justify-content: center;
-    font-size: 0.88rem;
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
+    font-size: 0.88rem !important;
+    box-sizing: border-box !important;
   }
-  
-  /* 9 Chapters on Phone */
+
+  /* -------------------------------------------------------------
+     PAGE 3: 9 CHAPTERS (บทเรียนทั้ง 9 บท)
+     ------------------------------------------------------------- */
+  .roadmap-callout-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 12px !important;
+    gap: 12px !important;
+  }
+
+  .roadmap-callout-banner .banner-content {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .chapters-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 16px !important;
+  }
+
+  .chapter-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    max-height: none !important;
+    padding: 12px !important;
+  }
+
+  .chapter-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding-bottom: 4px !important;
+  }
+
+  .chapter-card-item {
+    min-width: 200px !important;
+    max-width: 240px !important;
+    flex-shrink: 0 !important;
+    padding: 10px 12px !important;
+  }
+
   .chapter-detail-area {
-    padding: 16px 14px;
-    border-radius: 16px;
-    min-height: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 12px !important;
+    border-radius: 16px !important;
+    min-height: auto !important;
   }
-  
+
   .chapter-name-lg {
-    font-size: 1.25rem;
+    font-size: 1.2rem !important;
+    word-break: break-word !important;
   }
-  
+
   .subtab-nav {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-wrap: nowrap;
-    gap: 6px;
-    padding-bottom: 4px;
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    padding-bottom: 4px !important;
+    width: 100% !important;
   }
-  .subtab-nav::-webkit-scrollbar {
-    display: none;
-  }
-  
+
   .subtab-btn {
-    padding: 8px 14px;
-    font-size: 0.82rem;
-    min-height: 40px;
-    white-space: nowrap;
-    flex-shrink: 0;
+    padding: 8px 12px !important;
+    font-size: 0.82rem !important;
+    min-height: 40px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
-  
+
   .formula-card, .example-card, .concept-card {
-    padding: 16px 14px;
-    border-radius: 14px;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
   }
-  
+
   .formula-math-display {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 14px 12px;
-    font-size: 1.1rem;
-    min-height: 60px;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 10px 8px !important;
+    font-size: 0.95rem !important;
+    min-height: 50px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    text-align: center !important;
   }
-  .formula-math-display .katex {
-    font-size: 1.15rem;
+
+  /* -------------------------------------------------------------
+     PAGE 4: DECISION WIZARD (เข็มทิศเลือกสูตร)
+     ------------------------------------------------------------- */
+  .wizard-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
   }
-  
-  /* 90 Questions on Phone */
-  .practice-filters-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .practice-filter-group {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    padding-bottom: 6px;
-  }
-  
-  .practice-filter-btn {
-    flex-shrink: 0;
-    min-height: 38px;
-  }
-  
-  .practice-stats-bar {
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px 14px;
-  }
-  
-  .practice-item-card {
-    padding: 18px 14px;
-    border-radius: 16px;
-  }
-  
-  .p-title {
-    font-size: 1.1rem;
-  }
-  
-  .p-question {
-    padding: 14px 14px;
-    font-size: 0.92rem;
-  }
-  
-  .p-option-item {
-    min-height: 50px;
-    padding: 12px 14px;
-    gap: 12px;
-    font-size: 0.92rem;
-  }
-  
-  .opt-bullet {
-    min-width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
-  }
-  
-  .p-actions-row {
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
-  }
-  
-  .btn-submit-answer, .btn-retry-answer {
-    width: 100%;
-    min-height: 46px;
-    justify-content: center;
-  }
-  
-  /* Decision Wizard on Phone */
+
   .wizard-question-card, .wizard-result-card {
-    padding: 20px 16px;
-    border-radius: 16px;
+    padding: 18px 12px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
   .wizard-question-title {
-    font-size: 1.25rem;
-    margin-bottom: 18px;
+    font-size: 1.2rem !important;
+    margin-bottom: 16px !important;
+    word-break: break-word !important;
   }
-  
+
+  .wizard-options-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
   .wizard-opt-btn {
-    padding: 14px 16px;
-    font-size: 0.92rem;
-    min-height: 50px;
+    padding: 12px 14px !important;
+    font-size: 0.9rem !important;
+    min-height: 48px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
   }
-  
-  /* Solvers & Tables on Phone */
+
+  /* -------------------------------------------------------------
+     PAGE 5: INTERACTIVE SOLVERS (ห้องทดลอง & คำนวณสด)
+     ------------------------------------------------------------- */
+  .solvers-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+  }
+
   .solver-panel {
-    padding: 18px 14px;
-    border-radius: 16px;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
+
+  .solver-title {
+    font-size: 1.15rem !important;
+    word-break: break-word !important;
+  }
+
+  .form-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .canvas-wrapper {
-    padding: 8px;
+    padding: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
-  
+
   .spss-table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
-  
+
   .spss-table th, .spss-table td {
-    padding: 8px 10px;
-    font-size: 0.82rem;
+    padding: 6px 8px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* -------------------------------------------------------------
+     PAGE 6: PRACTICE ARENA (90 ข้อสอบจริง)
+     ------------------------------------------------------------- */
+  .practice-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .practice-filters-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .practice-filter-group {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    padding-bottom: 6px !important;
+    gap: 6px !important;
+  }
+
+  .practice-filter-btn {
+    flex-shrink: 0 !important;
+    min-height: 38px !important;
+    padding: 6px 12px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+
+  .practice-stats-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 10px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .practice-item-card {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .p-title {
+    font-size: 1.05rem !important;
+    word-break: break-word !important;
+  }
+
+  .p-question {
+    padding: 12px 12px !important;
+    font-size: 0.9rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+  }
+
+  .p-options-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .p-option-item {
+    min-height: 48px !important;
+    padding: 10px 12px !important;
+    gap: 10px !important;
+    font-size: 0.88rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+  }
+
+  .p-actions-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .btn-submit-answer, .btn-retry-answer {
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .hint-accordion, .hint-content, .p-feedback-msg {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    word-break: break-word !important;
+  }
+
+  /* -------------------------------------------------------------
+     PAGE 7: STATISTICAL TABLES (ตารางสถิติ & สรุปสูตรย่อ)
+     ------------------------------------------------------------- */
+  .tables-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .table-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
+    overflow-x: hidden !important;
+  }
+
+  .table-panel h3 {
+    font-size: 1.05rem !important;
+    word-break: break-word !important;
+  }
+
+  .data-table-styled {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .data-table-styled th, .data-table-styled td {
+    padding: 8px 6px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* -------------------------------------------------------------
+     MODALS & DIALOGS RESPONSIVENESS
+     ------------------------------------------------------------- */
+  .custom-modal-box {
+    width: 94% !important;
+    max-width: 94% !important;
+    box-sizing: border-box !important;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+    margin: 10px auto !important;
+  }
+
+  .modal-header h3 {
+    font-size: 1.05rem !important;
+    word-break: break-word !important;
+  }
+
+  .modal-body {
+    font-size: 0.88rem !important;
+    word-break: break-word !important;
   }
 }
 
