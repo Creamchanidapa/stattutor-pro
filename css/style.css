@@ -792,8 +792,9 @@ input:checked + .slider:before {
   color: var(--text-main);
   margin-bottom: 14px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
 }
 
 .chapter-list {
@@ -936,7 +937,9 @@ input:checked + .slider:before {
 .chapter-title-main {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-primary) !important;
+  line-height: 1.25;
+  margin-bottom: 4px;
 }
 
 .chapter-eng-title {
@@ -2821,6 +2824,7 @@ canvas {
 
 .step-card-header .step-title,
 .roadmap-title,
+.chapter-title-main,
 .chapter-name-lg,
 .option-item,
 .question-text,
@@ -3034,74 +3038,130 @@ svg:not(.katex svg) {
    RESPONSIVE DESIGN SYSTEM (IPAD, TABLET & MOBILE PHONES)
    ========================================================================= */
 
-/* --- 1. TABLET LANDSCAPE & IPAD PRO (1024px and below) --- */
-@media (max-width: 1024px) {
+/* --- 1. IPAD LANDSCAPE & TABLETS (1180px and below) --- */
+@media (max-width: 1180px) {
   .editorial-nav-container {
-    padding: 14px 24px;
-    gap: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 14px 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
-  .nav-col-links {
-    gap: 20px;
-  }
-  
-  .editorial-hero-h1 {
-    font-size: clamp(40px, 6vw, 60px);
-    letter-spacing: -1.5px;
-  }
-  
-  /* iPad 2-Column Balanced Grid for Variable Cards */
-  .variables-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 20px;
-  }
-  
-  .chapters-layout {
-    grid-template-columns: 280px 1fr;
-    gap: 20px;
-  }
-  
-  .solvers-grid, .tables-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-/* --- 2. IPAD PORTRAIT & MEDIUM TABLETS (899px and below) --- */
-@media (max-width: 899px) {
-  /* Center Col: Hidden on tablet portrait; sticky nav bar handles navigation */
+  /* Hide top text links on tablets since the sticky main-nav-bar is directly below */
   .nav-col-links {
     display: none !important;
   }
-  
-  .editorial-nav-container {
-    grid-template-columns: 1fr auto;
-    padding: 12px 20px;
+
+  .nav-col-brand {
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+  }
+
+  .nav-col-action {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
   }
   
   .main-nav-bar {
-    top: 66px;
-    justify-content: flex-start;
-    padding: 8px 16px;
-    gap: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    justify-content: flex-start !important;
+    padding: 10px 20px !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    top: 66px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .main-nav-bar::-webkit-scrollbar {
     display: none;
   }
   
+  .editorial-hero-h1 {
+    font-size: clamp(36px, 5.5vw, 54px) !important;
+    letter-spacing: -1.5px !important;
+  }
+  
+  /* iPad 2-Column Balanced Grid for Variable Cards */
+  .variables-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .var-card {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .chapters-layout {
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .chapter-sidebar {
+    width: 280px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .chapter-detail-area {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .solvers-grid, .tables-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* --- 2. IPAD PORTRAIT & MEDIUM TABLETS (899px and below) --- */
+@media (max-width: 899px) {
+  .editorial-nav-container {
+    padding: 12px 18px !important;
+  }
+  
+  .main-nav-bar {
+    top: 62px !important;
+    padding: 8px 14px !important;
+  }
+  
+  .app-container {
+    padding: 18px 16px 40px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   /* iPad Portrait Chapters Layout: Horizontal Touch Selector */
   .chapters-layout {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 18px !important;
+    box-sizing: border-box !important;
   }
   
   .chapter-sidebar {
-    position: static;
-    max-height: none;
-    padding: 16px 18px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    position: static !important;
+    max-height: none !important;
+    padding: 14px 16px !important;
+    box-sizing: border-box !important;
   }
   
   .chapter-list {
@@ -3109,9 +3169,10 @@ svg:not(.katex svg) {
     flex-direction: row !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none;
-    gap: 10px;
-    padding-bottom: 6px;
+    scrollbar-width: none !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding-bottom: 6px !important;
   }
   .chapter-list::-webkit-scrollbar {
     display: none;
@@ -3122,6 +3183,14 @@ svg:not(.katex svg) {
     max-width: 250px !important;
     flex-shrink: 0 !important;
   }
+
+  .chapter-detail-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 22px 18px !important;
+  }
   
   /* Category Pills: Horizontal Carousel on iPad Portrait */
   .variables-category-pills {
@@ -3129,21 +3198,52 @@ svg:not(.katex svg) {
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none;
-    padding: 2px 4px 8px 4px;
-    gap: 8px;
+    scrollbar-width: none !important;
+    padding: 2px 4px 8px 4px !important;
+    gap: 8px !important;
+    width: 100% !important;
   }
   .variables-category-pills::-webkit-scrollbar {
     display: none;
   }
   
   .var-category-btn {
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
   }
   
   .variables-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 18px;
+    gap: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .var-card {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .roadmap-container,
+  .wizard-container,
+  .solvers-grid,
+  .practice-list,
+  .tables-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .checklist-items-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .wizard-options-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
   }
 }
 
